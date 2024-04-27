@@ -7,7 +7,7 @@ class TestTaskController(unittest.TestCase):
         cls.client = client 
 
     def test_get_tasks(self):
-        response = self.client.get('/v1/tasks')
+        response = self.client.get('/tasks')
         self.assertEqual(response.status_code, 200)
 
     def test_create_task(self):
@@ -16,11 +16,11 @@ class TestTaskController(unittest.TestCase):
             "description": "Test Description",
             "status": "Pending"
         }
-        response = self.client.post('/v1/tasks', json=task_data)
+        response = self.client.post('/tasks', json=task_data)
         self.assertEqual(response.status_code, 201)
 
     def test_get_task_by_id(self):
-        response = self.client.get('/v1/tasks/1')
+        response = self.client.get('/tasks/1')
         self.assertEqual(response.status_code, 200)
 
     def test_update_task(self):
@@ -28,11 +28,11 @@ class TestTaskController(unittest.TestCase):
             "title": "Updated Test Task",
             "status": "Completed"
         }
-        response = self.client.put('/v1/tasks/1', json=task_data)
+        response = self.client.put('/tasks/1', json=task_data)
         self.assertEqual(response.status_code, 200)
 
     def test_delete_task(self):
-        response = self.client.delete('/v1/tasks/1')
+        response = self.client.delete('/tasks/1')
         self.assertEqual(response.status_code, 204)
 
 if __name__ == '__main__':

@@ -9,6 +9,11 @@ bp = Blueprint("task", __name__, description="Manage tasks")
 
 task_service = TaskService()
 
+@bp.route('/')
+def get_data():
+    data = {'message': 'ready!'}
+    return jsonify(data)
+
 
 @bp.route("/tasks")
 class TaskList(MethodView):
