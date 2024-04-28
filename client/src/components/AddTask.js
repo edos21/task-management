@@ -77,10 +77,10 @@ const AddTask = ({ addTask, editTask, taskData }) => {
         <div className="form-group">
           <label>Status</label>
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="pending">Pending</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
-            <option value="blocked">Blocked</option>
+            <option value="Pending">Pending</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+            <option value="Blocked">Blocked</option>
           </select>
         </div>
         <button type="submit">{taskData ? "Save Changes" : "Add Task"}</button>
