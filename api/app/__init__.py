@@ -56,5 +56,5 @@ def create_app(testing_config=None):
             ),
             401,
         )
-    api.register_blueprint(task_controller, url_prefix="/v1")
+    api.register_blueprint(task_controller, url_prefix="/")
     return app
