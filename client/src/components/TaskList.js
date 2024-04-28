@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchTasks, deleteTask } from '../redux/actions';
+import { fetchTasks } from '../redux/actions';
 import AddTask from './AddTask';
+import CardTask from './CardTask';
 
-const TaskList = ({ tasks, fetchTasks, deleteTask }) => {
+import "../styles/TaskList.css";
+
+const TaskList = ({ tasks, fetchTasks }) => {
   const [editTaskData, setEditTaskData] = useState(null);
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
-
 
   useEffect(() => {
     fetchTasks(); 
@@ -15,10 +17,6 @@ const TaskList = ({ tasks, fetchTasks, deleteTask }) => {
   const handleEditTask = (task) => {
     setEditTaskData(task);
     setShowAddTaskModal(true);
-  };
-
-  const handleDelete = (taskId) => {
-    deleteTask(taskId);
   };
 
   const toggleAddTaskModal = () => {
@@ -37,19 +35,18 @@ const TaskList = ({ tasks, fetchTasks, deleteTask }) => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">Task Management</h1>
       {statusOrder.map(status => (
-        <div key={status}>
+        <div class="group-container" key={status}>
           {groupedTasks[status] && groupedTasks[status].length > 0 && (
             <>
               <h2>{status}</h2>
               <ul className="list-group">
                 {groupedTasks[status].map(task => (
-                  <li key={task.id} className="list-group-item">
-                    <strong>{task.title}</strong> - {task.description}
-                    <button onClick={() => handleEditTask(task)}>Edit</button>
-                    <button onClick={() => handleDelete(task.id)}>Delete</button>
-                  </li>
+                  <CardTask
+                  key={task.id}
+                  task={task}
+                  handleEditTask={handleEditTask}
+                />
                 ))}
               </ul>
             </>
@@ -64,11 +61,10 @@ const TaskList = ({ tasks, fetchTasks, deleteTask }) => {
                 <h5 className="modal-title">Add Task</h5>
                 <button
                   type="button"
-                  className="close"
+                  className="btn btn-link custom-link"
                   onClick={toggleAddTaskModal}
-                  aria-label="Close"
                 >
-                  <span aria-hidden="true">&times;</span>
+                  X
                 </button>
               </div>
               <div className="modal-body">
@@ -87,8 +83,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchTasks,
-  deleteTask
+  fetchTasks
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
