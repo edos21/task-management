@@ -1,0 +1,14 @@
+.group-container{
+    margin-top: 16px;
+}
+.list-group li{
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+        background-color: #dee2e6;
+    }
+    .btn-group {
+        align-self: center;
+        height: 50%;
+    }
+}

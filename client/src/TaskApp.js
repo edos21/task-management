@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
-import "./TaskApp.css";
+import "./styles/TaskApp.css";
 
 export default function TaskApp() {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
@@ -11,9 +11,10 @@ export default function TaskApp() {
   };
 
   return (
-    <div className="task-app">
+    <div className="task-app container-fluid">
+      <h1 className="mb-3">Task Management</h1>
       <button className="btn btn-primary" onClick={toggleAddTaskModal}>
-        Add Task
+      <i class="bi bi-plus"></i> Add Task
       </button>
       <TaskList />
       {showAddTaskModal && (
@@ -24,11 +25,10 @@ export default function TaskApp() {
                 <h5 className="modal-title">Add Task</h5>
                 <button
                   type="button"
-                  className="close"
+                  className="btn btn-link custom-link"
                   onClick={toggleAddTaskModal}
-                  aria-label="Close"
                 >
-                  <span aria-hidden="true">&times;</span>
+                  X
                 </button>
               </div>
               <div className="modal-body">
