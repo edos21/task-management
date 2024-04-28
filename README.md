@@ -4,8 +4,8 @@
 - [Preview](#preview)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-  - [Backend](#backend)
-  - [Frontend](#frontend)
+  - [Backend](#backend-1)
+  - [Frontend](#frontend-1)
 - [API Endpoints](#api-endpoints)
 - [Contributing](#contributing)
 
